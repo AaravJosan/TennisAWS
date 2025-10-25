@@ -18,6 +18,7 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
+        <h1 className='font-mono'>This is a heading with a lot of important infomation</h1>
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
