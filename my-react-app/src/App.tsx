@@ -1,36 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import FileUpload from "./components/fileUpload";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="min-h-screen bg-slate-950 bg-gradient-to-br from-slate-900 via-slate-950 to-black text-slate-100 flex items-center justify-center px-6 py-16">
+      <div className="w-full max-w-4xl">
+        <header className="text-center mb-12">
+          <span className="text-xs uppercase tracking-[0.35em] text-violet-400">
+            Video upload
+          </span>
+          <h1 className="mt-4 text-4xl md:text-5xl font-semibold text-white">
+            Bring your highlights to life
+          </h1>
+          <p className="mt-4 text-sm md:text-base text-slate-300 max-w-2xl mx-auto">
+            Drop in your MP4 footage and our AI-powered tennis insights will do
+            the rest. Upload a clip to get started.
+          </p>
+        </header>
+
+        <div className="bg-white/10 backdrop-blur-xl border border-white/10 rounded-3xl shadow-2xl p-8 md:p-12">
+          <FileUpload />
+        </div>
+
+
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <h1 className='font-mono'>This is a heading with a lot of important infomation</h1>
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
