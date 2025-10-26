@@ -72,7 +72,7 @@ function FileUpload() {
       setError(null);
   
       // Get presigned URL
-      const res = await fetch(`/generate-upload-url?fileName=${encodeURIComponent(file.name)}`);
+      const res = await fetch(`/generate-upload-url?fileName=${encodeURIComponent(file.name)}`); //add backened url when website is ready to be hosted: https://api.myapp.com/generate-upload-url?fileName=${file.name}
       if (!res.ok) throw new Error("Failed to get upload URL");
       const { uploadURL } = await res.json();
   
