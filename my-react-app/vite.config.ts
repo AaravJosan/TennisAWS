@@ -11,7 +11,7 @@ export default defineConfig({
       "/generate-upload-url": {
         target: "http://localhost:3000",
         changeOrigin: true,
-      },
+      }, //can remove proxy when website is ready to be hosted
     },
   },
 });
