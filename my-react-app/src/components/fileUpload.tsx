@@ -66,13 +66,31 @@ function FileUpload() {
     setError(null);
   };
 
-  const handleAnalyze = () => {
-    if (!file) {
-      return;
+  const handleAnalyze = async () => {
+    if (!file) return;
+    try {
+      setError(null);
+  
+      // Get presigned URL
+      const res = await fetch(`/generate-upload-url?fileName=${encodeURIComponent(file.name)}`);
+      if (!res.ok) throw new Error("Failed to get upload URL");
+      const { uploadURL } = await res.json();
+  
+      // Upload file to S3
+      const uploadRes = await fetch(uploadURL, {
+        method: "PUT",
+        headers: { "Content-Type": file.type },
+        body: file,
+      });
+      if (!uploadRes.ok) throw new Error("Upload failed");
+  
+      alert("Upload successful!");
+    } catch (err: any) {
+      console.error(err);
+      setError(err.message || "Upload failed. Try again.");
     }
-    // Placeholder action until backend integration is ready.
-    console.info(`Analyzing ${file.name}`);
   };
+  
 
   const analyzeButtonClasses = [
     "mt-6 w-full rounded-full py-3 text-sm font-semibold transition-all duration-200",
